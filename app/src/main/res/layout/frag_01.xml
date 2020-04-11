@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/frag1_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="home_Button"/>
+
+    <mydemo.com.textinterface.view.TimeProgress
+        android:id="@+id/time"
+        android:layout_width="100dp"
+        android:layout_height="50dp" />
+    <TextView
+        android:id="@+id/shouTimeTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="222"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="-35dp"
+        android:textColor="#fff"/>
+</LinearLayout>

@@ -8,7 +8,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -16,9 +18,13 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 
+/**
+ * @author Wang
+ */
 public class MainActivity extends AppCompatActivity {
     private RecyclerView mRvFruits;
     private List<Fruit> mFruitList = new ArrayList<>();
+    private List<Fruit> mFruitList222 = new ArrayList<>();
     private FruitAdapter mAdapter;
     private static final int PER_PAGE = 10;
 
@@ -29,13 +35,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        init();
+//        init();
 
     }
 
     private void init() {
         initFruits();
-        mAdapter = new FruitAdapter(mFruitList);
+        mAdapter = new FruitAdapter(mFruitList222);
         mRvFruits = findViewById(R.id.rv_fruits);
         mRvFruits.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         mAdapter.setHeaderView(LayoutInflater.from(this).inflate(R.layout.item_header,mRvFruits,false));
@@ -52,26 +58,37 @@ public class MainActivity extends AppCompatActivity {
 
     private void initFruits() {
         Log.i("mytest", "initFruits");
-        Fruit mango = new Fruit(getRandomLenthName("Mango"), R.drawable.ic_launcher_background);
+        Fruit mango = new Fruit(getRandomLenthName("Pineapple"), R.drawable.ic_launcher_background);
         mFruitList.add(mango);
-        Fruit orange = new Fruit(getRandomLenthName("Orange"), R.drawable.ic_launcher_background);
+        Fruit orange = new Fruit(getRandomLenthName("Pineapple"), R.drawable.ic_launcher_background);
         mFruitList.add(orange);
-        Fruit pear = new Fruit(getRandomLenthName("Pear"), R.drawable.ic_launcher_background);
+        Fruit pear = new Fruit(getRandomLenthName("Pineapple"), R.drawable.ic_launcher_background);
         mFruitList.add(pear);
         Fruit pineapple = new Fruit(getRandomLenthName("Pineapple"), R.drawable.ic_launcher_background);
         mFruitList.add(pineapple);
         Fruit strawberry = new Fruit(getRandomLenthName("Strawberry"), R.drawable.ic_launcher_background);
         mFruitList.add(strawberry);
-        Fruit watermelon = new Fruit(getRandomLenthName("Watermelon"), R.drawable.ic_launcher_background);
+        Fruit watermelon = new Fruit(getRandomLenthName("Pineapple"), R.drawable.ic_launcher_background);
         mFruitList.add(watermelon);
-        Fruit apple = new Fruit(getRandomLenthName("Apple"), R.drawable.ic_launcher_background);
+        Fruit apple = new Fruit(getRandomLenthName("Pineapple"), R.drawable.ic_launcher_background);
         mFruitList.add(apple);
-        Fruit banana = new Fruit(getRandomLenthName("Banana"), R.drawable.ic_launcher_background);
+        Fruit banana = new Fruit(getRandomLenthName("Pineapple"), R.drawable.ic_launcher_background);
         mFruitList.add(banana);
-        Fruit cherry = new Fruit(getRandomLenthName("Cherry"), R.drawable.ic_launcher_background);
+        Fruit cherry = new Fruit(getRandomLenthName("Pineapple"), R.drawable.ic_launcher_background);
         mFruitList.add(cherry);
-        Fruit grape = new Fruit(getRandomLenthName("Grape"), R.drawable.ic_launcher_background);
+        Fruit grape = new Fruit(getRandomLenthName("Pineapple"), R.drawable.ic_launcher_background);
         mFruitList.add(grape);
+
+        Map<String, Fruit> objectObjectMap = new HashMap<>();
+        for (int i = 0; i < mFruitList.size(); i++) {
+            objectObjectMap.put(mFruitList.get(i).getName(),mFruitList.get(i));
+        }
+
+        for (int i = 0; i < objectObjectMap.size(); i++) {
+            Fruit fruit = objectObjectMap.get(mFruitList.get(i).getName());
+            mFruitList222.add(fruit);
+        }
+
     }
 
     //模拟加载网络数据
